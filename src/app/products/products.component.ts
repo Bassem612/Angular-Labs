@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   storeName:string
   storeLogo:string
   ProductList:IProduct[]
-
+  ICategory:ICategory[]
   ClientName:string
   IsPurshased:boolean
 
@@ -31,6 +31,12 @@ export class ProductsComponent implements OnInit {
       Price:123,
       Img:'bbb'
   }
+  ], 
+  this.ICategory = [
+    {
+      ID : 555, 
+      Name : "Cat" 
+    }
   ]
 
   }
