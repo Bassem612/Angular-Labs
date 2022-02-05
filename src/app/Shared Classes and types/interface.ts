@@ -12,9 +12,9 @@ export interface ICategory{
 } 
 
 export enum DiscountOffers {
-   "NoDiscount",
-    "10%",
-    "15%" = '15%',
+   "NoDiscount" = "No Discount",
+    "10%" = 0.10,
+    "15%" = 0.15,
 }
 
 

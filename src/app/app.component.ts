@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import {ProductsComponent} from './products/products.component'
 
 @Component({
   selector: 'myfirstapp-root',
@@ -7,4 +8,35 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Day1-Lab';
+
+ @ViewChild(ProductsComponent) child:any;
+ 
+ ngOnInit(): void {
+
+}
+
+products:any
+ngAfterViewInit(): void {
+   this.products = this.child.allProducts;
+}
+
+DisplayData(){
+  console.log(this.products); 
+}
+
+GetProductById = (id:number)=>{
+  this.products.filter((product:any)=>{
+       if(product.ID === id){
+           return console.log(product);
+       }
+       
+      //  else if(typeof id !== Number){
+      //      return console.log(null);
+      //  }
+      
+  }) 
+}
+
+
+
 }

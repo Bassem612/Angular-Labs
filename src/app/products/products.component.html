@@ -1,5 +1,77 @@
-<h1> {{storeName}} </h1>
+<h1> {{storeName | uppercase}} </h1>
 <br>
 <img [src]="storeLogo">
 
-<h3> {{"We offer an explicit discount of " + Discount}} </h3>
+
+<!-- {{Discount === DiscountOffers['15%'] || DiscountOffers['10%']? true  :  false }} -->
+
+<!-- <h3 *ngIf="Discount"> {{"We offer an explicit discount of " + Discount}} </h3> -->
+
+
+<div *ngIf="Discount != 'No Discount'; then thenblock "></div>
+
+<ng-template #thenblock>
+    <h3> We offer an explicit discount of {{Discount | percent}} </h3>
+</ng-template>
+
+
+<br>
+
+
+<select >
+    <option *ngFor="let cat of ICategory" value="">  {{cat.Name}}  </option>
+</select>
+
+<br>
+
+
+<div *ngIf="IsPurchased; then showDiv; else showTable "></div>
+
+<ng-template #showTable>
+    <table class="table text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">img</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ProductList">
+            <th scope="row"> {{item.ID}} </th>
+            <td> {{item.Name}} </td>
+            <td> {{item.Quantity}} </td>
+            <td> {{item.Price}} </td>
+            <td> {{item.Img}} </td>
+          </tr>
+        </tbody>
+    </table>
+</ng-template>
+
+<ng-template #showDiv>
+    <div>
+        <h2>{{"Thanks for purchasing from our Store, " + ClientName}} </h2>
+    </div>
+</ng-template>
+
+
+<input type="text" placeholder="Please type your name" [(ngModel)] = "ClientName" > 
+<span> {{ClientName}} </span>
+
+<br> 
+
+<button class="btn btn-primary mt-2 ms-2 px-5" (click) = "purchasing()" >BUY</button> <br>
+
+
+
+
+<div *ngFor="let product of allProducts" >
+  {{product.Name}}
+</div> 
+
+
+
+
+
