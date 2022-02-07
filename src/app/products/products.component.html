@@ -65,12 +65,14 @@
 <button class="btn btn-primary mt-2 ms-2 px-5" (click) = "purchasing()" >BUY</button> <br>
 
 
-
-
 <div *ngFor="let product of allProducts" >
   {{product.Name}}
 </div> 
 
+
+<button class="btn btn-primary mt-2 ms-2 px-5" (click)="goToPrdWithDis()">Products with discount</button>
+<button class="btn btn-primary mt-2 ms-2 px-5" (click)="goToPrdWithoutDis()">Product without discounts</button>
+<router-outlet></router-outlet>
 
 
 

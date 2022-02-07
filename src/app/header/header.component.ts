@@ -9,8 +9,6 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-  myId:string = "myHeading"
-
   ngOnInit(): void {
   }
 

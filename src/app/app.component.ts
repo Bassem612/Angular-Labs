@@ -29,11 +29,6 @@ GetProductById = (id:number)=>{
        if(product.ID === id){
            return console.log(product);
        }
-       
-      //  else if(typeof id !== Number){
-      //      return console.log(null);
-      //  }
-      
   }) 
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct, ICategory, DiscountOffers } from '../Shared Classes and types/interface';
 import {ProductService} from '../services/product.service'
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -32,16 +33,18 @@ export class ProductsComponent implements OnInit {
 
  allProducts:any = this.renderValues();
 
-//  productById:any
-//  ngAfterViewInit(): void {
-//   this.productById = this.renderValues();  // console.log(  this.ProductService.GetProductById());
-// }
+ goToPrdWithDis(){
+  this.router.navigate(['productsWithDiscount'], {relativeTo:this.activatedRoute})  
+}
 
-
+goToPrdWithoutDis(){
+console.log(this.allProducts);
+ this.router.navigate(['productsWithoutDiscount'], {relativeTo:this.activatedRoute})  
+}
 
 
   
-  constructor(private ProductService:ProductService) { 
+  constructor(private ProductService:ProductService, private router:Router, private activatedRoute:ActivatedRoute) { 
 
     this.ClientName = "Bassem",
     this.storeName = "Amazon",
@@ -96,9 +99,7 @@ export class ProductsComponent implements OnInit {
       Name : "Cat4" 
     }
   ]
+
   }
-
-
-
 
 }

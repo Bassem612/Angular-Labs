@@ -1,0 +1,9 @@
+<div class="card my-5"  *ngFor="let post of postsList">
+    <div class="card-header">
+        {{post.id}}
+      </div>    
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> {{post.title}} </li>
+      <li class="list-group-item"> {{post.body}} </li>
+    </ul>
+</div>
