@@ -1,22 +1,47 @@
-<form>
+<form class="border p-5" #userform ="ngForm" [class.border-danger]="userform.invalid" (ngSubmit)="onSubmit()" novalidate>
+
+  <!-- {{userform.valid}} -->
+  <!-- {{userform.value | json}} -->
+  <br>
+  <br>
+  <!-- {{userModel | json }} --> 
+
+  <!-- {{userModel | json}} -->
     <div class="mb-3">
         <label for="exampleusername1" class="form-label">User Name</label>
-        <input type="email" class="form-control" id="exampleusername1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <input type="text" pattern="^[A-Za-z]+$" #name ="ngModel" [(ngModel)]="userModel.username" [class.is-invalid] = "name.invalid &&name.touched" required class="form-control"  name="username"  id="exampleusername1" aria-describedby="emailHelp">
+        <div *ngIf="name.errors"> 
+          <small class="text-danger" *ngIf="name.errors['required']" >Username is required*</small>
+          <small class="text-danger" *ngIf="name.errors['pattern']" >Invalid Username*</small>
+        </div>
     </div>
+    <!-- {{name.pristine}} -->
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <input type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" #email = "ngModel" [(ngModel)]="userModel.email" class="form-control"  name="email" required  id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div *ngIf="email.errors"> 
+        <small class="text-danger" *ngIf="email.errors['required']" >Email is required*</small>
+        <small class="text-danger" *ngIf="email.errors['pattern']" >Invalid email syntax *</small>
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <input type="password" #password = "ngModel" [(ngModel)]="userModel.password" name="password" required ngModel class="form-control" id="exampleInputPassword1">
+      <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required*</small>
     </div>
     <div class="mb-3">
         <label for="confirm" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="confirm">
+        <input type="password" #ConfirmPassword = "ngModel" [(ngModel)]="userModel.confirmPassword" required name="password-confirm" ngModel class="form-control" id="confirm">
+        <small class="text-danger" [class.d-none]="ConfirmPassword.valid || ConfirmPassword.untouched">Confirm Password is required*</small>
     </div>
 
-    <button type="submit" class="btn btn-primary">Register</button>
+    <div class="mb-3">
+      <select required name="" id="" #topic = "ngModel" [(ngModel)]="userModel.password">
+        <option selected >please select option </option>
+        <option>Facebook</option>
+        <option>Youtube</option>
+      </select>
+     </div>
+
+    <button [disabled]="userform.invalid" type="submit" class="btn btn-primary">Register</button>
   </form>
