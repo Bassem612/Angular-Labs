@@ -9,6 +9,7 @@ import { ProductsWithDiscountComponent } from './products-with-discount/products
 import { ProductsWithoutDiscountComponent } from './products-without-discount/products-without-discount.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ReactiveformsComponent } from './reactiveforms/reactiveforms.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch:'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'users' , component: UsersComponent},
   {path:'register' , component: RegisterComponent},
   {path:'login' , component: LoginComponent},
+  {path:'registerByReactiveForm' , component: ReactiveformsComponent},
   {path:'posts' , component: PostsComponent},
   {path:'**' , component: PagenotfoundComponent}
 ];

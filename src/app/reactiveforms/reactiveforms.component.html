@@ -1,0 +1,26 @@
+<div class="container">
+    <form [formGroup] = "registerationForm">
+
+        <div class="mb-3">
+          <label for="username" class="form-label">UserName</label>
+          <input [class.is-invalid]="userName?.invalid && userName?.touched" formControlName="username" type="text" class="form-control" id="username">
+          <div *ngIf="userName?.invalid && userName?.touched">
+            <small class="text-danger"  *ngIf = "userName?.errors?.['required']" >Username is required</small>
+            <small class="text-danger"  *ngIf = "userName?.errors?.['minlength']" >Username must be at least 5 characters</small>
+            <small class="text-danger"  *ngIf = "userName?.errors?.['forbiddenName']" >{{userName?.errors?.['forbiddenName'].value}} is not allowed</small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
+            <input formControlName="confirmPassword" type="password" class="form-control" id="exampleInputPassword2">
+            <small class="text-danger" *ngIf = "registerationForm?.errors?.['mismatch']" >Password and confirm Password Not match</small>
+          </div>
+        <button type="submit" class="btn btn-primary mb-3">Submit</button> <br>
+        <button class="btn btn-primary" (click)="loadAPIData()">Get Data</button>
+      </form>
+</div>
